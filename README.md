@@ -28,3 +28,10 @@ Instalasi:
 1. Jalankan `php artisan serve`.
 
 Sekarang Anda bisa masuk ke aplikasi sebagai admin dengan menggunakan email `admin@test.com` dan password `admin123`.
+
+## TTD
+Aghits Nidallah
+Universitas Muhammadiyah Cirebon
+Prodi S1 Teknik Informatika
+Fakultas Teknik
+190511038
