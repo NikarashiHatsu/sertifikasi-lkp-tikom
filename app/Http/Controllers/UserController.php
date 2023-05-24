@@ -14,6 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         return view('dashboard.master.user.index');
     }
 
@@ -22,6 +24,8 @@ class UserController extends Controller
      */
     public function create()
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         return view('dashboard.master.user.create');
     }
 
@@ -30,6 +34,8 @@ class UserController extends Controller
      */
     public function store(StoreUserRequest $request)
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         $data = $request->validated();
 
         try {
@@ -51,6 +57,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         return view('dashboard.master.user.edit', [
             'user' => $user,
         ]);
@@ -61,6 +69,8 @@ class UserController extends Controller
      */
     public function update(UpdateUserRequest $request, User $user)
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         $data = $request->validated();
 
         try {
@@ -86,6 +96,8 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         try {
             $user->delete();
         } catch (\Throwable $th) {

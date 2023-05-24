@@ -11,6 +11,8 @@ class ParticipantController extends Controller
      */
     public function index()
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         return view('dashboard.transaction.participant.index');
     }
 
@@ -19,6 +21,8 @@ class ParticipantController extends Controller
      */
     public function destroy(Participant $participant)
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         try {
             $participant->delete();
         } catch (\Throwable $th) {

@@ -13,6 +13,8 @@ class SchemaController extends Controller
      */
     public function index()
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         return view('dashboard.master.skema.index');
     }
 
@@ -21,6 +23,8 @@ class SchemaController extends Controller
      */
     public function create()
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         return view('dashboard.master.skema.create');
     }
 
@@ -29,6 +33,8 @@ class SchemaController extends Controller
      */
     public function store(StoreSchemaRequest $request)
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         $data = $request->validated();
 
         try {
@@ -50,6 +56,8 @@ class SchemaController extends Controller
      */
     public function edit(Schema $schema)
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         return view('dashboard.master.skema.edit', [
             'schema' => $schema,
         ]);
@@ -60,6 +68,8 @@ class SchemaController extends Controller
      */
     public function update(UpdateSchemaRequest $request, Schema $schema)
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         $data = $request->validated();
 
         try {
@@ -81,6 +91,8 @@ class SchemaController extends Controller
      */
     public function destroy(Schema $schema)
     {
+        abort_if(auth()->user()->role == 'user', 403);
+
         try {
             $schema->delete();
         } catch (\Throwable $th) {
