@@ -29,6 +29,8 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['a
     Route::group(['prefix' => 'transaction', 'as' => 'transaction.'], function () {
         Route::resource('participant', \App\Http\Controllers\ParticipantController::class)->only(['index', 'destroy']);
     });
+
+    Route::resource('my-course', \App\Http\Controllers\MyCourseController::class)->except('show', 'edit', 'delete');
 });
 
 Route::middleware('auth')->group(function () {

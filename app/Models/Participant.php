@@ -12,6 +12,20 @@ class Participant extends Model
     use HasFactory, SoftDeletes;
 
     /**
+     * Boot the model.
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function(self $model) {
+            $model->user_id = auth()->id();
+        });
+    }
+
+    /**
      * A BelongsTo relation to \App\Models\Schema.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -49,7 +49,17 @@
     @endif
 
     @if (auth()->user()->role == 'user')
-
+        <li class="menu-title mt-4 mb-2">
+            Kursus Saya
+        </li>
+        <li>
+            <a href="{{ route('dashboard.my-course.index') }}" @class(['active' => request()->routeIs('dashboard.my-course.*')])>
+                <x-phosphor-table class="w-4 h-4" />
+                <span>
+                    Seluruh Kursus
+                </span>
+            </a>
+        </li>
     @endif
 
     <li class="menu-title mt-4 mb-2">
