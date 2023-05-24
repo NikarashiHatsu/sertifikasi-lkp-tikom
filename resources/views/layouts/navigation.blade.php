@@ -26,7 +26,7 @@
         </a>
     </li>
     <li>
-        <a @class(['active' => request()->routeIs('dashboard')])>
+        <a href="{{ route('dashboard.master.user.index') }}" @class(['active' => request()->routeIs('dashboard.master.user.*')])>
             <x-phosphor-user class="w-4 h-4" />
             <span>
                 User

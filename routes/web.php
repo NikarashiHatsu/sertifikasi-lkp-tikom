@@ -23,6 +23,7 @@ Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['a
 
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
         Route::resource('schema', \App\Http\Controllers\SchemaController::class)->except('show');
+        Route::resource('user', \App\Http\Controllers\UserController::class)->except('show');
     });
 });
 

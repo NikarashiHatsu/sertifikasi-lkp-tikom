@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreSchemaRequest;
-use App\Http\Requests\UpdateSchemaRequest;
-use App\Models\Schema;
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
-class SchemaController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dashboard.master.skema.index');
+        return view('dashboard.master.user.index');
     }
 
     /**
@@ -21,18 +22,18 @@ class SchemaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.master.skema.create');
+        return view('dashboard.master.user.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreSchemaRequest $request)
+    public function store(StoreUserRequest $request)
     {
         $data = $request->validated();
 
         try {
-            Schema::create($data);
+            User::create($data);
         } catch (\Throwable $th) {
             return redirect()
                 ->back()
@@ -48,22 +49,26 @@ class SchemaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Schema $schema)
+    public function edit(User $user)
     {
-        return view('dashboard.master.skema.edit', [
-            'schema' => $schema,
+        return view('dashboard.master.user.edit', [
+            'user' => $user,
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSchemaRequest $request, Schema $schema)
+    public function update(UpdateUserRequest $request, User $user)
     {
         $data = $request->validated();
 
         try {
-            $schema->update($data);
+            if ($request->has('password')) {
+                $data['password'] = Hash::make($data['password']);
+            }
+
+            $user->update($data);
         } catch (\Throwable $th) {
             return redirect()
                 ->back()
@@ -79,10 +84,10 @@ class SchemaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Schema $schema)
+    public function destroy(User $user)
     {
         try {
-            $schema->delete();
+            $user->delete();
         } catch (\Throwable $th) {
             return redirect()
                 ->back()
