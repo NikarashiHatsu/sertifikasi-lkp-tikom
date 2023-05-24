@@ -55,6 +55,14 @@
     <li class="menu-title mt-4 mb-2">
         Pengaturan
     </li>
+    <li>
+        <a href="{{ route('profile.edit') }}" @class(['active' => request()->routeIs('profile.edit')])>
+            <x-phosphor-gear class="w-4 h-4" />
+            <span>
+                Akun
+            </span>
+        </a>
+    </li>
     <li x-data>
         <form
             x-ref="logoutForm"
