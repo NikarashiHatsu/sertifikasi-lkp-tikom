@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'dashboard', 'as' => 'dashboard.', 'middleware' => ['auth', 'verified']], function () {
-    Route::view('/', 'dashboard')->name('index');
+    Route::get('/', \App\Http\Controllers\DashboardController::class)->name('index');
 
     Route::group(['prefix' => 'master', 'as' => 'master.'], function () {
         Route::resource('schema', \App\Http\Controllers\SchemaController::class)->except('show');
