@@ -38,14 +38,14 @@
                         @foreach ($schemas as $schema)
                             <option
                                 @selected(old('kode_skema') == $schema->kode)
-                                @disabled($schema->participants->count() == $schema->jumlah_unit || auth()->user()->participants()->where('kode_skema', $schema->kode)->exists())
+                                @disabled($schema->participants->count() >= $schema->jumlah_unit || auth()->user()->participants()->where('kode_skema', $schema->kode)->exists())
                                 value="{{ $schema->kode }}"
                             >
                                 {{ $schema->nama }}
 
                                 {{ auth()->user()->participants()->where('kode_skema', $schema->kode)->exists() ? '(Sudah diikuti)' : '' }}
 
-                                @if ($schema->participants->count() == $schema->jumlah_unit)
+                                @if ($schema->participants->count() >= $schema->jumlah_unit)
                                     (Penuh)
                                 @endif
                             </option>
