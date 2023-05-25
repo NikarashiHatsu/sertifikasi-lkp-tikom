@@ -37,6 +37,7 @@ class Participant extends Model
 
     /** @var array<string> $fillable */
     protected $fillable = [
+        'user_id',
         'kode_skema',
         'nama_peserta',
         'jenis_kelamin',
