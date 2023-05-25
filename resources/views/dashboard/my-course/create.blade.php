@@ -8,7 +8,7 @@
         </a>
 
         <h3 class="text-2xl font-semibold">
-            Ikuti Kursus Baru
+            Ikuti Sertifikasi Baru
         </h3>
     </div>
 
@@ -17,7 +17,7 @@
     <div class="card bg-base-100 border rounded">
         <div class="card-body">
             <h5 class="text-lg font-semibold">
-                Form Ikuti Kursus Baru
+                Form Ikuti Sertifikasi Baru
             </h5>
 
             <form action="{{ route('dashboard.my-course.store') }}" method="post">
@@ -25,7 +25,7 @@
                 <div class="form-control mt-2">
                     <label for="kode_skema" class="label">
                         <span class="label-text">
-                            Kursus
+                            Sertifikasi
                             <span class="text-red-500">*</span>
                         </span>
                     </label>
